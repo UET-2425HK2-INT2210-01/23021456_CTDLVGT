@@ -1,38 +1,53 @@
-#include <iostream>
-#include <stack>
-using namespace std;
+/*
+Có hàm băm: h(i) = (i+3) mod 17
 
-bool isValid(string s) {
-    stack<char> st;
-    
-    for (char c : s) {
-        if (c == '(' || c == '[' || c == '{') {
-            st.push(c);
-        } else {
-            if (st.empty()) return false;
-            char top = st.top();
-            if ((c == ')' && top == '(') ||
-                (c == ']' && top == '[') ||
-                (c == '}' && top == '{')) {
-                st.pop();
-            } else {
-                return false;
-            }
-        }
-    }
-    
-    return st.empty();
-}
+i       h(i)
+1       4
+3       6
+18      4
+8       11
+23      9
+35      4
+11      14
+36      5
+20      6
+16      2
 
-int main() {
-    string s;
-    cin >> s;
+a. chaining
 
-    if (isValid(s)) {
-        cout << "Valid" << endl;
-    } else {
-        cout << "Invalid" << endl;
-    }
+0      |  -
+1      |  -
+2      |  16
+3      |  -
+4      |  1 → 18 → 35
+5      |  36
+6      |  3 → 20
+7      |  -
+8      |  -
+9      |  23
+10     |  -
+11     |  8
+12     |  -
+13     |  -
+14     |  11
+15     |  -
+16     |  -
 
-    return 0;
-}
+b.Linear probing
+0      |  -
+1      |  -
+2      |  16
+3      |  -
+4      |  1
+5      |  18
+6      |  3
+7      |  35
+8      |  36
+9      |  23
+10     |  20
+11     |  8
+12     |  -
+13     |  -
+14     |  11
+15     |  -
+16 */
